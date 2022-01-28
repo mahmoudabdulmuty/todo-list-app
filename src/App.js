@@ -1,7 +1,8 @@
 import { nanoid } from 'nanoid';
 import { Component } from 'react';
-import { TiTrash } from 'react-icons/ti';
 import './App.css';
+import Header from './components/Header/';
+import ListItems from './components/ListItems/';
 
 class App extends Component {
 	state = {
@@ -40,31 +41,12 @@ class App extends Component {
 	render() {
 		return (
 			<>
-				<header>
-					<h1>Todo List</h1>
-					<input
-						onChange={this.handleChange}
-						type="text"
-						name="todo"
-						value={this.state.item.todo}
-						placeholder="Things to be done..."
-					/>
-					<span className="addBtn" onClick={this.handleAdd}>
-						Add
-					</span>
-				</header>
-				<ul>
-					{this.state.items.length > 0 &&
-						this.state.items.map(({ todo, id }) => (
-							<li key={id}>
-								<span>{todo}</span>
-								<TiTrash
-									className="trashIcon"
-									onClick={() => this.handleDelete(id)}
-								></TiTrash>
-							</li>
-						))}
-				</ul>
+				<Header
+					handleAdd={this.handleAdd}
+					todo={this.state.item.todo}
+					handleChange={this.handleChange}
+				/>
+				<ListItems items={this.state.items} handleDelete={this.handleDelete} />
 			</>
 		);
 	}
