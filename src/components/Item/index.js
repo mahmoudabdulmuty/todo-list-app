@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TiTrash } from 'react-icons/ti';
-import './item.css';
+import './Item.css';
 
 export class index extends Component {
 	render() {
